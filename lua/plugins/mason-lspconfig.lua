@@ -3,13 +3,20 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
   },
-  opts = {
-    ensure_installed = { "lua_ls" },
-    handlers = {
-      function(server_name)
-        require("lspconfig")[server_name].setup({})
-      end,
-    },
-  },
+  opts = function()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    return {
+      ensure_installed = { "lua_ls" },
+      handlers = {
+        function(server_name)
+          require("lspconfig")[server_name].setup({
+	    capabilities = capabilities,
+          })
+        end,
+      },
+    }
+  end,
 }
