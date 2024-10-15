@@ -10,7 +10,7 @@ return {
     local lspconfig = require("lspconfig")
 
     return {
-      ensure_installed = { "lua_ls", "gopls", "jsonls", "tsserver", "volar", "yamlls", "pyright" },
+      ensure_installed = { "lua_ls", "gopls", "jsonls", "ts_ls", "volar", "yamlls", "pyright", "rust_analyzer" },
       handlers = {
         function(server_name)
           lspconfig[server_name].setup({
